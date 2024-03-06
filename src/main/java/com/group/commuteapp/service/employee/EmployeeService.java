@@ -1,13 +1,17 @@
-package com.group.commuteapp.repository.employee;
+package com.group.commuteapp.service.employee;
 
 import com.group.commuteapp.domain.employee.Employee;
 import com.group.commuteapp.domain.employee.EmployeeRepository;
 import com.group.commuteapp.domain.employee.Role;
 import com.group.commuteapp.domain.team.Team;
 import com.group.commuteapp.domain.team.TeamRepository;
-import com.group.commuteapp.dto.employee.AddEmployeeRequest;
+import com.group.commuteapp.dto.employee.request.AddEmployeeRequest;
+import com.group.commuteapp.dto.employee.response.EmployeeLIstResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class EmployeeService {
@@ -27,5 +31,10 @@ public class EmployeeService {
             team.setManager(request.getName());
         }
         team.addMember();
+    }
+    public List<EmployeeLIstResponse> getEmployeeList(){
+        return employeeRepository.findAll().stream()
+                .map(EmployeeLIstResponse::new)
+                .collect(Collectors.toList());
     }
 }

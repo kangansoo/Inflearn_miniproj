@@ -10,7 +10,7 @@ public class Team {
     private String manager;
     private int memberCount;
 
-    public Team(){}
+    protected Team(){}
     public Team(String name) {
         this.name = name;
     }
@@ -21,5 +21,17 @@ public class Team {
 
     public void addMember(){
         this.memberCount++;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getManager() {
+        return manager;
+    }
+
+    public int getMemberCount() {
+        return memberCount;
     }
 }

@@ -1,4 +1,4 @@
-package com.group.commuteapp.dto.team;
+package com.group.commuteapp.dto.team.request;
 
 public class AddTeamRequest {
     private String name;
